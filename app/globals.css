@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #17211f;
+  --muted: #65716d;
+  --paper: #f7f8f5;
+  --green: #176b52;
+  --line: #e4e9e5;
+}
+* { box-sizing: border-box; }
+html { min-height: 100%; background: var(--paper); scroll-behavior: smooth; }
+body { margin: 0; color: var(--ink); background: var(--paper); font-family: Arial, Helvetica, sans-serif; }
+button, a { -webkit-tap-highlight-color: transparent; }
+.fc { --fc-border-color: #e7ece8; --fc-button-bg-color: #176b52; --fc-button-border-color: #176b52; --fc-button-hover-bg-color: #10543f; --fc-button-hover-border-color: #10543f; --fc-button-active-bg-color: #10543f; --fc-today-bg-color: #edf6f0; --fc-page-bg-color: white; }
+.fc .fc-toolbar-title { font-size: 1.05rem; font-weight: 700; }
+.fc .fc-button { border-radius: 999px; font-size: .78rem; text-transform: capitalize; box-shadow: none !important; }
+.fc .fc-daygrid-day-number { color: #47534d; text-decoration: none; padding: 8px; }
+.fc .fc-col-header-cell-cushion { color: #64716b; text-decoration: none; font-size: .75rem; padding: 10px 4px; }
+.fc .fc-event { border: 0; border-radius: 5px; padding: 2px 4px; cursor: pointer; }
