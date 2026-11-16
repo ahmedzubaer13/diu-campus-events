@@ -16,20 +16,23 @@ type CampusEvent = {
   organizer_name: string;
   summary: string;
   status: string;
-  categories?: { name: string; color: string } | null;
+  categories?: { name: string; color: string } | { name: string; color: string }[] | null;
 };
 
 export function EventCalendar({ events }: { events: CampusEvent[] }) {
   const [selected, setSelected] = useState<CampusEvent | null>(null);
-  const calendarEvents = useMemo(() => events.map((event) => ({
+  const calendarEvents = useMemo(() => events.map((event) => {
+    const category = Array.isArray(event.categories) ? event.categories[0] : event.categories;
+    return ({
     id: event.id,
     title: event.title,
     start: event.starts_at,
     end: event.ends_at,
-    backgroundColor: event.categories?.color || "#176b52",
-    borderColor: event.categories?.color || "#176b52",
+    backgroundColor: category?.color || "#176b52",
+    borderColor: category?.color || "#176b52",
     extendedProps: { event },
-  })), [events]);
+  });
+  }), [events]);
 
   return (
     <div>
