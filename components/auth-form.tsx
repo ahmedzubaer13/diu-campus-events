@@ -25,7 +25,7 @@ export function AuthForm({ mode }: { mode: Mode }) {
         const student_id = String(formData.get("student_id") || "").trim();
         const batch = String(formData.get("batch") || "").trim();
         const { data, error: authError } = await supabase.auth.signUp({
-          email, password, options: { data: { full_name, student_id, batch } },
+          email, password, options: { data: { full_name, student_id, batch }, emailRedirectTo: window.location.origin + "/auth/callback" },
         });
         if (authError) throw authError;
         if (data.session) {
