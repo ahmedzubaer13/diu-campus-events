@@ -23,8 +23,8 @@ export function EventForm() {
       if (!user) throw new Error("Please sign in again.");
       const { data: profile } = await supabase.from("profiles").select("account_status,full_name").eq("id", user.id).single();
       if (profile?.account_status !== "approved") throw new Error("Only verified DIU students can publish events.");
-      const starts = new Date(String(formData.get("starts_at")));
-      const ends = new Date(String(formData.get("ends_at")));
+      const starts = new Date(String(formData.get("starts_at")) + ":00+06:00");
+      const ends = new Date(String(formData.get("ends_at")) + ":00+06:00");
       if (Number.isNaN(starts.getTime()) || Number.isNaN(ends.getTime()) || ends <= starts) throw new Error("Please provide a valid event start and end time.");
       const poster = formData.get("poster") as File | null;
       let poster_path: string | null = null;
