@@ -36,7 +36,7 @@ export default async function HomePage() {
           <p className="mt-1 text-sm text-[#65716d]">Published upcoming events</p>
           <div className="my-6 h-px bg-[#edf0ed]" />
           <p className="text-sm font-semibold">A shared space for campus life</p>
-          <p className="mt-2 text-sm leading-6 text-[#65716d]">Find events, plan your week, and stay connected with what's happening across DIU.</p>
+          <p className="mt-2 text-sm leading-6 text-[#65716d]">Find events, plan your week, and stay connected with what&apos;s happening across DIU.</p>
           <div className="mt-5 flex flex-wrap gap-2">{["Academic","Technology","Cultural","Sports","Career","Workshop"].map((c) => <span key={c} className="rounded-full bg-[#f1f6f2] px-3 py-1.5 text-xs font-medium text-[#176b52]">{c}</span>)}</div>
         </div>
       </section>
