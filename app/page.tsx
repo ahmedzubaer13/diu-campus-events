@@ -7,13 +7,22 @@ export const revalidate = 60;
 
 export default async function HomePage() {
   const supabase = await createClient();
-  const { data } = await supabase
+  const [{ data }, { data: { user } }] = await Promise.all([
+    supabase
     .from("events")
     .select("id,title,summary,venue,starts_at,ends_at,organizer_name,status,categories(name,color)")
     .eq("status", "published")
     .gte("ends_at", new Date(Date.now() - 24 * 60 * 60 * 1000).toISOString())
     .order("starts_at", { ascending: true })
-    .limit(250);
+    .limit(250),
+    supabase.auth.getUser(),
+  ]);
+  const { data: profile } = user
+    ? await supabase.from("profiles").select("role,account_status").eq("id", user.id).maybeSingle()
+    : { data: null };
+  const canPublish = profile?.account_status === "approved" && (profile.role === "admin" || profile.role === "student");
+  const publishHref = canPublish ? "/dashboard/events/new" : user ? "/dashboard" : "/auth/sign-up";
+  const publishLabel = canPublish ? "Publish an event" : user ? "View dashboard" : "Publish an event";
   const events = data || [];
 
   return (
@@ -26,7 +35,7 @@ export default async function HomePage() {
           <p className="mt-6 max-w-xl text-lg leading-8 text-[#65716d]">Discover workshops, competitions, cultural programs, sports, and academic events happening across Daffodil International University.</p>
           <div className="mt-9 flex flex-wrap gap-3">
             <a href="#calendar" className="rounded-full bg-[#176b52] px-6 py-3 text-sm font-semibold text-white hover:bg-[#10543f]">Explore campus events ↗</a>
-            <Link href="/auth/sign-up" className="rounded-full border border-[#dce4de] bg-white px-6 py-3 text-sm font-semibold hover:border-[#176b52]">Publish an event</Link>
+            <Link href={publishHref} className="rounded-full border border-[#dce4de] bg-white px-6 py-3 text-sm font-semibold hover:border-[#176b52]">{publishLabel}</Link>
           </div>
           <p className="mt-5 text-xs text-[#87928d]">Open to everyone · Event publishing for verified DIU students</p>
         </div>
