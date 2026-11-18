@@ -30,7 +30,7 @@ export default async function HomePage() {
       <SiteHeader />
       <section className="mx-auto grid max-w-7xl gap-12 px-5 pb-16 pt-12 sm:px-8 md:grid-cols-[1.15fr_.85fr] md:items-center md:pb-24 md:pt-20">
         <div>
-          <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#dce8df] bg-white px-3 py-1.5 text-xs font-semibold uppercase tracking-[.14em] text-[#176b52]"><span className="h-2 w-2 rounded-full bg-[#39a47b]" /> The DIU student community</p>
+          
           <h1 className="max-w-3xl text-5xl font-semibold leading-[1.08] tracking-[-.055em] md:text-7xl">Your campus.<br /><span className="text-[#176b52]">One calendar.</span></h1>
           <p className="mt-6 max-w-xl text-lg leading-8 text-[#65716d]">Discover workshops, competitions, cultural programs, sports, and academic events happening across Daffodil International University.</p>
           <div className="mt-9 flex flex-wrap gap-3">
@@ -55,7 +55,7 @@ export default async function HomePage() {
           <EventCalendarLoader events={events} />
         </div>
       </section>
-      <footer className="mx-auto flex max-w-7xl flex-col gap-2 px-5 py-8 text-xs text-[#87928d] sm:flex-row sm:items-center sm:justify-between sm:px-8"><span>© {new Date().getFullYear()} DIU Events</span><span>Built for the Daffodil International University community</span></footer>
+      <footer className="mx-auto flex max-w-7xl flex-col gap-2 px-5 py-8 text-xs text-[#87928d] sm:flex-row sm:items-center sm:justify-between sm:px-8"><span>© {new Date().getFullYear()} DIU Events</span></footer>
     </main>
   );
 }
