@@ -6,6 +6,7 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import listPlugin from "@fullcalendar/list";
 import interactionPlugin from "@fullcalendar/interaction";
+import luxonPlugin from "@fullcalendar/luxon3";
 
 type CampusEvent = {
   id: string;
@@ -34,13 +35,11 @@ export function EventCalendar({ events }: { events: CampusEvent[] }) {
   });
   }), [events]);
 
-  const formatTime = (value: string) => new Intl.DateTimeFormat("en-BD", { hour: "numeric", minute: "2-digit", timeZone: "Asia/Dhaka" }).format(new Date(value));
-  const formatRange = (start: string, end: string) => `${formatTime(start)} – ${formatTime(end)}`;
 
   return (
     <div>
       <FullCalendar
-        plugins={[dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin]}
+        plugins={[dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin, luxonPlugin]}
         initialView="dayGridMonth"
         headerToolbar={{ left: "prev,next today", center: "title", right: "dayGridMonth,timeGridWeek,listMonth" }}
         height="auto"
@@ -50,7 +49,7 @@ export function EventCalendar({ events }: { events: CampusEvent[] }) {
         nowIndicator
         firstDay={0}
         timeZone="Asia/Dhaka"
-        eventContent={(info) => { if (!info.view.type.startsWith("list")) return; const start = info.event.start; if (!start) return info.event.title; const end = info.event.end ?? start; return <span><span className="mr-2 text-xs font-medium text-[#65716d]">{formatRange(start.toISOString(), end.toISOString())}</span>{info.event.title}</span>; }}
+        eventTimeFormat={{ hour: "numeric", minute: "2-digit", meridiem: "short" }}
       />
       {selected && (
         <div className="fixed inset-0 z-50 grid place-items-center bg-black/40 p-4" role="dialog" aria-modal="true" aria-label="Event details" onClick={() => setSelected(null)}>
