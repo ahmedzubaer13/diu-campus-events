@@ -43,7 +43,11 @@ export function EventCalendar({ events }: { events: CampusEvent[] }) {
         headerToolbar={{ left: "prev,next today", center: "title", right: "dayGridMonth,listMonth" }}
         height="auto"
         events={calendarEvents}
-        displayEventTime={false}
+        displayEventTime={true}
+        views={{
+          dayGridMonth: { displayEventTime: false },
+          listMonth: { displayEventTime: true },
+        }}
         eventClick={(info) => setSelected(info.event.extendedProps.event as CampusEvent)}
         dayMaxEvents
         nowIndicator
