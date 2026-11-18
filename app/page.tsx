@@ -46,7 +46,7 @@ export default async function HomePage() {
           {events.length ? <EventCalendar events={events} /> : <div className="rounded-2xl border border-dashed border-[#d9e2db] bg-[#fbfcfa] px-6 py-16 text-center"><p className="text-lg font-semibold">The calendar is ready for its first event.</p><p className="mt-2 text-sm text-[#65716d]">Once verified students publish events, they will appear here.</p><Link href="/auth/sign-up" className="mt-5 inline-flex rounded-full bg-[#176b52] px-5 py-2.5 text-sm font-semibold text-white">Register as a student</Link></div>}
         </div>
       </section>
-      <footer className="mx-auto flex max-w-7xl flex-col gap-2 px-5 py-8 text-xs text-[#87928d] sm:flex-row sm:items-center sm:justify-between sm:px-8"><span>© {new Date().getFullYear()} DIU Campus Events</span><span>Built for the Daffodil International University community</span></footer>
+      <footer className="mx-auto flex max-w-7xl flex-col gap-2 px-5 py-8 text-xs text-[#87928d] sm:flex-row sm:items-center sm:justify-between sm:px-8"><span>© {new Date().getFullYear()} DIU Events</span><span>Built for the Daffodil International University community</span></footer>
     </main>
   );
 }
