@@ -48,7 +48,6 @@ export function EventCalendar({ events }: { events: CampusEvent[] }) {
         nowIndicator
         firstDay={0}
         timeZone="Asia/Dhaka"
-        eventTimeFormat={{ hour: "numeric", minute: "2-digit", meridiem: "short" }}
       />
       {selected && (
         <div className="fixed inset-0 z-50 grid place-items-center bg-black/40 p-4" role="dialog" aria-modal="true" aria-label="Event details" onClick={() => setSelected(null)}>
