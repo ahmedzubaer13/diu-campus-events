@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { SiteHeader } from "@/components/site-header";
-import { EventCalendar } from "@/components/event-calendar";
+import { EventCalendarLoader } from "@/components/event-calendar-loader";
 import { createClient } from "@/lib/supabase/server";
 
 export const revalidate = 60;
@@ -43,7 +43,7 @@ export default async function HomePage() {
       <section id="calendar" className="border-y border-[#e4e9e5] bg-white">
         <div className="mx-auto max-w-7xl px-5 py-14 sm:px-8">
           <div className="mb-8 flex flex-col justify-between gap-3 sm:flex-row sm:items-end"><div><p className="text-xs font-semibold uppercase tracking-[.16em] text-[#176b52]">Discover & participate</p><h2 className="mt-2 text-3xl font-semibold tracking-tight">Campus event calendar</h2></div><p className="max-w-md text-sm leading-6 text-[#65716d]">Browse public events and select any event to see its details. Times are shown in Bangladesh time.</p></div>
-          {events.length ? <EventCalendar events={events} /> : <div className="rounded-2xl border border-dashed border-[#d9e2db] bg-[#fbfcfa] px-6 py-16 text-center"><p className="text-lg font-semibold">The calendar is ready for its first event.</p><p className="mt-2 text-sm text-[#65716d]">Once verified students publish events, they will appear here.</p><Link href="/auth/sign-up" className="mt-5 inline-flex rounded-full bg-[#176b52] px-5 py-2.5 text-sm font-semibold text-white">Register as a student</Link></div>}
+          <EventCalendarLoader events={events} />
         </div>
       </section>
       <footer className="mx-auto flex max-w-7xl flex-col gap-2 px-5 py-8 text-xs text-[#87928d] sm:flex-row sm:items-center sm:justify-between sm:px-8"><span>© {new Date().getFullYear()} DIU Events</span><span>Built for the Daffodil International University community</span></footer>
