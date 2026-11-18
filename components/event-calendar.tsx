@@ -3,7 +3,6 @@
 import { useMemo, useState } from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
-import timeGridPlugin from "@fullcalendar/timegrid";
 import listPlugin from "@fullcalendar/list";
 import interactionPlugin from "@fullcalendar/interaction";
 import luxonPlugin from "@fullcalendar/luxon3";
@@ -39,9 +38,9 @@ export function EventCalendar({ events }: { events: CampusEvent[] }) {
   return (
     <div>
       <FullCalendar
-        plugins={[dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin, luxonPlugin]}
+        plugins={[dayGridPlugin, listPlugin, interactionPlugin, luxonPlugin]}
         initialView="dayGridMonth"
-        headerToolbar={{ left: "prev,next today", center: "title", right: "dayGridMonth,timeGridWeek,listMonth" }}
+        headerToolbar={{ left: "prev,next today", center: "title", right: "dayGridMonth,listMonth" }}
         height="auto"
         events={calendarEvents}
         eventClick={(info) => setSelected(info.event.extendedProps.event as CampusEvent)}
