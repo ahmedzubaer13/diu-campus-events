@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { redirect } from "next/navigation";
 import { SiteHeader } from "@/components/site-header";
 import { AdminPanel } from "@/components/admin-panel";
@@ -17,6 +18,7 @@ export default async function AdminPage() {
     <p className="text-xs font-semibold uppercase tracking-[.15em] text-[#176b52]">Platform administration</p>
     <h1 className="mt-2 text-3xl font-semibold tracking-tight">Admin dashboard</h1>
     <p className="mt-2 text-sm text-[#65716d]">Review student verification requests and moderate campus events.</p>
+    <Link href="/dashboard/events/new" className="mt-5 inline-flex rounded-full bg-[#176b52] px-5 py-2.5 text-sm font-semibold text-white hover:bg-[#10543f]">＋ Publish an event</Link>
     <div className="mt-8"><AdminPanel students={students || []} events={events || []} adminId={user.id} /></div>
   </div></main>;
 }
