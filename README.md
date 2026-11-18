@@ -1,4 +1,4 @@
-# DIU Campus Events
+# DIU Events
 
 A public event calendar for Daffodil International University. Anyone can browse events; verified DIU students can publish events; administrators review student verification and manage events.
 
