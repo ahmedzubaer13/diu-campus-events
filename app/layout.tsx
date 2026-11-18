@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "DIU Campus Events",
+  title: "DIU Events",
   description: "Discover what's happening across Daffodil International University.",
 };
 
