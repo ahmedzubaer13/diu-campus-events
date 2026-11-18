@@ -47,6 +47,7 @@ export function EventEditForm({ event, categories }: { event: EventRecord; categ
         ends_at: ends.toISOString(),
         registration_url: String(formData.get("registration_url") || "").trim() || null,
         contact_email: String(formData.get("contact_email") || "").trim() || null,
+        organizer_name: String(formData.get("organizer_name") || "").trim(),
       };
       const { error: updateError } = await supabase.from("events").update(payload).eq("id", event.id);
       if (updateError) throw updateError;
@@ -64,6 +65,7 @@ export function EventEditForm({ event, categories }: { event: EventRecord; categ
       <label className="space-y-1.5 sm:col-span-2"><span className="text-sm font-medium">Event title *</span><input name="title" required maxLength={120} defaultValue={event.title} className={input} /></label>
       <label className="space-y-1.5 sm:col-span-2"><span className="text-sm font-medium">Short summary *</span><input name="summary" required maxLength={220} defaultValue={event.summary} className={input} /></label>
       <label className="space-y-1.5"><span className="text-sm font-medium">Category</span><select name="category_id" defaultValue={event.category_id || ""} className={input}><option value="">Select category</option>{categories.map((category) => <option key={category.id} value={category.id}>{category.name}</option>)}</select></label>
+      <label className="space-y-1.5"><span className="text-sm font-medium">Organizer / organization name *</span><input name="organizer_name" required maxLength={120} defaultValue={event.organizer_name} className={input} /></label>
       <label className="space-y-1.5"><span className="text-sm font-medium">Venue *</span><input name="venue" required defaultValue={event.venue} className={input} /></label>
       <label className="space-y-1.5"><span className="text-sm font-medium">Starts at (Bangladesh time) *</span><input name="starts_at" type="datetime-local" required defaultValue={localDate(event.starts_at)} className={input} /></label>
       <label className="space-y-1.5"><span className="text-sm font-medium">Ends at (Bangladesh time) *</span><input name="ends_at" type="datetime-local" required defaultValue={localDate(event.ends_at)} className={input} /></label>
