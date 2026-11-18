@@ -12,8 +12,7 @@ export function SiteHeader() {
 
   useEffect(() => {
     const storedTheme = window.localStorage.getItem("diu-events-theme");
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const enabled = storedTheme ? storedTheme === "dark" : prefersDark;
+    const enabled = storedTheme === "dark";
     document.documentElement.classList.toggle("dark", enabled);
     setDarkMode(enabled);
 
