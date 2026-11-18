@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import listPlugin from "@fullcalendar/list";
@@ -88,7 +88,7 @@ export function EventCalendar({ events }: { events: CampusEvent[] }) {
       <aside className="upcoming-panel" aria-label="Upcoming events">
         <div className="upcoming-heading">
           <div>
-            <p className="calendar-eyebrow">Don't miss out</p>
+            <p className="calendar-eyebrow">Don&apos;t miss out</p>
             <h3 className="upcoming-title">Upcoming events</h3>
           </div>
           <span className="upcoming-total">{upcomingEvents.length}</span>
@@ -117,7 +117,7 @@ export function EventCalendar({ events }: { events: CampusEvent[] }) {
           <div className="upcoming-empty">
             <span className="empty-calendar-icon">▦</span>
             <strong>No upcoming events yet</strong>
-            <p>Check back soon for what's happening around DIU.</p>
+            <p>Check back soon for what&apos;s happening around DIU.</p>
           </div>
         )}
         <Link href="/#calendar" className="upcoming-browse">Browse the calendar <span aria-hidden="true">→</span></Link>
