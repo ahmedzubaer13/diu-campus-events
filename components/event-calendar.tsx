@@ -34,6 +34,9 @@ export function EventCalendar({ events }: { events: CampusEvent[] }) {
   });
   }), [events]);
 
+  const formatTime = (value: string) => new Intl.DateTimeFormat("en-BD", { hour: "numeric", minute: "2-digit", timeZone: "Asia/Dhaka" }).format(new Date(value));
+  const formatRange = (start: string, end: string) => `${formatTime(start)} – ${formatTime(end)}`;
+
   return (
     <div>
       <FullCalendar
@@ -47,6 +50,7 @@ export function EventCalendar({ events }: { events: CampusEvent[] }) {
         nowIndicator
         firstDay={0}
         timeZone="Asia/Dhaka"
+        eventContent={(info) => info.view.type.startsWith("list") ? <span><span className="mr-2 text-xs font-medium text-[#65716d]">{formatRange(info.event.startStr, info.event.endStr)}</span>{info.event.title}</span> : undefined}
       />
       {selected && (
         <div className="fixed inset-0 z-50 grid place-items-center bg-black/40 p-4" role="dialog" aria-modal="true" aria-label="Event details" onClick={() => setSelected(null)}>
