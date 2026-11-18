@@ -71,7 +71,7 @@ export function AdminPanel({ students, events, adminId }: { students: Student[];
     </div> : <div className="mt-4 space-y-3">
       {events.map(event => <article key={event.id} className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-[#e3e9e4] bg-white p-5">
         <div><h3 className="font-semibold">{event.title}</h3><p className="mt-1 text-sm text-[#65716d]">{event.organizer_name} · {event.venue}</p><p className="mt-1 text-xs text-[#87928d]">{new Date(event.starts_at).toLocaleString("en-BD",{dateStyle:"medium",timeStyle:"short",timeZone:"Asia/Dhaka"})}</p></div>
-        <div className="flex items-center gap-3"><span className="rounded-full bg-[#f1f4f1] px-3 py-1 text-xs font-semibold capitalize">{event.status}</span>{event.status === "published" && <button disabled={busy === event.id} onClick={() => cancelEvent(event)} className="rounded-full border border-[#e6caca] px-4 py-2 text-xs font-semibold text-red-700 disabled:opacity-50">Cancel event</button>}</div>
+        <div className="flex flex-wrap items-center gap-2"><span className="rounded-full bg-[#f1f4f1] px-3 py-1 text-xs font-semibold capitalize">{event.status}</span><a href={`/dashboard/events/${event.id}/edit`} className="rounded-full border border-[#dfe5e1] px-4 py-2 text-xs font-semibold text-[#176b52] hover:border-[#176b52]">Edit</a>{event.status === "published" && <button disabled={busy === event.id} onClick={() => cancelEvent(event)} className="rounded-full border border-[#e6caca] px-4 py-2 text-xs font-semibold text-red-700 disabled:opacity-50">Cancel event</button>}</div>
       </article>)}
       {!events.length && <Empty text="No events have been submitted." />}
     </div>}
