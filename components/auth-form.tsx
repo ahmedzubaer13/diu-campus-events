@@ -55,7 +55,7 @@ export function AuthForm({ mode }: { mode: Mode }) {
       {error && <p role="alert" className="rounded-xl bg-red-50 p-3 text-sm text-red-700">{error}</p>}
       {message && <p role="status" className="rounded-xl bg-green-50 p-3 text-sm leading-6 text-green-800">{message}</p>}
       <button disabled={loading} className="w-full rounded-full bg-[#176b52] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#10543f] disabled:opacity-60">{loading ? "Please wait…" : isSignup ? "Create student account" : "Sign in"}</button>
-      <p className="text-center text-sm text-[#65716d]">{isSignup ? "Already registered?" : "New to DIU Campus Events?"} <Link className="font-semibold text-[#176b52] hover:underline" href={isSignup ? "/auth/sign-in" : "/auth/sign-up"}>{isSignup ? "Sign in" : "Create an account"}</Link></p>
+      <p className="text-center text-sm text-[#65716d]">{isSignup ? "Already registered?" : "New to DIU Events?"} <Link className="font-semibold text-[#176b52] hover:underline" href={isSignup ? "/auth/sign-in" : "/auth/sign-up"}>{isSignup ? "Sign in" : "Create an account"}</Link></p>
     </form>
   );
 }
