@@ -38,7 +38,7 @@ export function EventForm() {
       }
       const payload = {
         owner_id: user.id,
-        organizer_name: profile.full_name,
+        organizer_name: String(formData.get("organizer_name") || "").trim(),
         title: String(formData.get("title") || "").trim(),
         summary: String(formData.get("summary") || "").trim(),
         description: String(formData.get("description") || "").trim(),
@@ -65,6 +65,7 @@ export function EventForm() {
       <label className="space-y-1.5 sm:col-span-2"><span className="text-sm font-medium">Event title *</span><input name="title" required maxLength={120} className={input} placeholder="e.g. DIU Tech Fest 2026" /></label>
       <label className="space-y-1.5 sm:col-span-2"><span className="text-sm font-medium">Short summary *</span><input name="summary" required maxLength={220} className={input} placeholder="A short introduction shown on event cards" /></label>
       <label className="space-y-1.5"><span className="text-sm font-medium">Category</span><select name="category_id" className={input}><option value="">Select category</option>{categories.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}</select></label>
+      <label className="space-y-1.5"><span className="text-sm font-medium">Organizer / organization name *</span><input name="organizer_name" required maxLength={120} className={input} placeholder="e.g. DIU Computer Programming Club" /></label>
       <label className="space-y-1.5"><span className="text-sm font-medium">Venue *</span><input name="venue" required className={input} placeholder="e.g. Knowledge Tower" /></label>
       <label className="space-y-1.5"><span className="text-sm font-medium">Starts at (Bangladesh time) *</span><input name="starts_at" type="datetime-local" required className={input} /></label>
       <label className="space-y-1.5"><span className="text-sm font-medium">Ends at (Bangladesh time) *</span><input name="ends_at" type="datetime-local" required className={input} /></label>
